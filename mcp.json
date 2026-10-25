@@ -1,0 +1,53 @@
+{
+  "mcpServers": {
+    "charles-darwin-ai": {
+      "command": "cargo",
+      "args": [
+        "run",
+        "--release",
+        "--quiet"
+      ],
+      "env": {
+        "RUST_LOG": "info",
+        "TITAN_PROTOCOL": "DARWIN",
+        "FIPS_203_LEVEL": "ML-KEM-768",
+        "FIPS_204_LEVEL": "ML-DSA-65"
+      },
+      "tools": [
+        {
+          "name": "evaluate_fitness_landscape_dynamics",
+          "description": "Computes selective pressure coefficients, allele fixation probabilities and phenotypic adaptive divergence",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "population_size": {
+                "type": "integer"
+              },
+              "mutation_rate": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "population_size"
+            ]
+          }
+        },
+        {
+          "name": "reconstruct_phylogenetic_cladogram",
+          "description": "Constructs maximum parsimony and maximum likelihood cladistic evolutionary trees across taxa",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "taxa_features": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "taxa_features"
+            ]
+          }
+        }
+      ]
+    }
+  }
+}
